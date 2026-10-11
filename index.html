@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pixel-perfect YouTube Replica created purely with modern semantic HTML5 and CSS3. Features authentic dark theme, responsive grid, dynamic hover effects, and pure CSS sidebar toggle.">
+  <title>YouTube Replica - Pure HTML &amp; CSS Demo</title>
+  
+  <!-- Google Fonts: Roboto & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Checkbox hack for pure CSS sidebar toggle -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
+
+  <!-- ==================== HEADER / TOP NAVBAR ==================== -->
+  <header class="yt-header" id="main-header">
+    <div class="header-left">
+      <label for="sidebar-toggle" class="icon-btn menu-btn" aria-label="Toggle Navigation Sidebar" title="Guide">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"></path>
+        </svg>
+      </label>
+
+      <a href="#" class="yt-logo-link" aria-label="YouTube Home">
+        <div class="yt-logo-icon">
+          <svg viewBox="0 0 24 24" class="logo-play-svg">
+            <path d="M21.58 7.19a2.76 2.76 0 0 0-1.95-1.96C17.9 4.75 12 4.75 12 4.75s-5.9 0-7.63.48a2.76 2.76 0 0 0-1.95 1.96A28.91 28.91 0 0 0 2 12a28.91 28.91 0 0 0 .42 4.81c.24.9.95 1.61 1.95 1.86 1.73.48 7.63.48 7.63.48s5.9 0 7.63-.48a2.76 2.76 0 0 0 1.95-1.86A28.91 28.91 0 0 0 22 12a28.91 28.91 0 0 0-.42-4.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path>
+          </svg>
+        </div>
+        <span class="yt-logo-text">YouTube</span>
+        <span class="yt-country-badge">DEMO</span>
+      </a>
+    </div>
+
+    <!-- Center Search Section -->
+    <div class="header-center">
+      <form class="search-form" action="#" method="get" onsubmit="return false;">
+        <div class="search-input-wrapper">
+          <input type="text" class="search-input" placeholder="Search" aria-label="Search" id="search-input">
+        </div>
+        <button type="submit" class="search-btn" aria-label="Search" title="Search">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M20.87 20.17l-5.59-5.59A7.94 7.94 0 0 0 17 9.5a7.5 7.5 0 1 0-7.5 7.5 7.94 7.94 0 0 0 5.08-1.72l5.59 5.59.7-.7zM3 9.5a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0z"></path>
+          </svg>
+        </button>
+      </form>
+      <button class="icon-btn voice-search-btn" aria-label="Search with your voice" title="Search with your voice">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Right Utility Buttons -->
+    <div class="header-right">
+      <button class="create-btn" title="Create">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-4.5l4 4v-11l-4 4V6zm-1 11H4V7h12v10z"></path>
+        </svg>
+        <span>Create</span>
+      </button>
+
+      <button class="icon-btn notification-btn" title="Notifications" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2v-5c0-3.07-1.64-5.64-4.5-6.32V6c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C9.63 7.36 8 9.92 8 13v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"></path>
+        </svg>
+        <span class="badge-count">9+</span>
+      </button>
+
+      <div class="user-avatar-btn" title="Account profile">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="User Profile" class="avatar-img">
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN LAYOUT CONTAINER ==================== -->
+  <div class="app-layout">
+    
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="yt-sidebar" id="main-sidebar">
+      <div class="sidebar-scrollable">
+        
+        <!-- Primary Navigation -->
+        <nav class="nav-group">
+          <a href="#" class="nav-item active">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            </svg>
+            <span class="nav-title">Home</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon shorts-red">
+              <path d="M17.77 10.32l-1.2-.5-1.1-.48V8.1a4.2 4.2 0 0 0-4.2-4.2c-1.3 0-2.4.6-3.1 1.6l-3.3 5.5a4.2 4.2 0 0 0 1.5 5.7l1.2.5 1.1.48v1.24a4.2 4.2 0 0 0 4.2 4.2c1.3 0 2.4-.6 3.1-1.6l3.3-5.5a4.2 4.2 0 0 0-1.5-5.7zM10 14.5v-5l4.5 2.5L10 14.5z"></path>
+            </svg>
+            <span class="nav-title">Shorts</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M18.7 8.7H5.3V7h13.4v1.7zm-1.7-5H7v1.7h10V3.7zm3.4 8.6H3.6c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h16.8c.6 0 1-.4 1-1v-8c0-.6-.4-1-1-1zm-1 8H4.6v-6h14.8v6zm-8.8-5v4l3.5-2-3.5-2z"></path>
+            </svg>
+            <span class="nav-title">Subscriptions</span>
+          </a>
+        </nav>
+
+        <hr class="nav-divider">
+
+        <!-- Library / You Section -->
+        <div class="nav-section-header">
+          <span class="section-title">You</span>
+          <svg viewBox="0 0 24 24" class="mini-arrow-icon">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+          </svg>
+        </div>
+
+        <nav class="nav-group">
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+            </svg>
+            <span class="nav-title">History</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M22 13h-4v4h-2v-4h-4v-2h4V7h2v4h4v2zm-8-6H2v2h12V7zm0 4H2v2h12v-2zm-4 4H2v2h8v-2z"></path>
+            </svg>
+            <span class="nav-title">Playlists</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M10 16.5l6-4.5-6-4.5v9zM5 2c-.55 0-1 .45-1 1v18c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H5zm0 18V4h14v16H5z"></path>
+            </svg>
+            <span class="nav-title">Your videos</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path>
+            </svg>
+            <span class="nav-title">Watch Later</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"></path>
+            </svg>
+            <span class="nav-title">Liked videos</span>
+          </a>
+        </nav>
+
+        <hr class="nav-divider">
+
+        <!-- Subscriptions Channel List -->
+        <div class="nav-section-header">
+          <span class="section-title">Subscriptions</span>
+        </div>
+
+        <nav class="nav-group subscriptions-group">
+          <a href="#" class="nav-item channel-item">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead" class="sub-avatar">
+            <span class="nav-title">Tech Lead Pro</span>
+            <span class="live-indicator"></span>
+          </a>
+          <a href="#" class="nav-item channel-item">
+            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="CodeMaster" class="sub-avatar">
+            <span class="nav-title">CodeMaster HQ</span>
+          </a>
+          <a href="#" class="nav-item channel-item">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Design Matrix" class="sub-avatar">
+            <span class="nav-title">Design Matrix</span>
+          </a>
+          <a href="#" class="nav-item channel-item">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Science" class="sub-avatar">
+            <span class="nav-title">Quantum Frontiers</span>
+            <span class="live-indicator"></span>
+          </a>
+          <a href="#" class="nav-item channel-item">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=80&q=80" alt="Lofi Radio" class="sub-avatar">
+            <span class="nav-title">Chillwave Beats 24/7</span>
+          </a>
+        </nav>
+
+        <hr class="nav-divider">
+
+        <!-- Explore Section -->
+        <div class="nav-section-header">
+          <span class="section-title">Explore</span>
+        </div>
+
+        <nav class="nav-group">
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M17.53 11.2c-.23-.3-.5-.58-.8-.84-.96-.83-1.63-1.9-1.92-3.1-.38-1.57-.12-3.23.71-4.6-2.18.52-4.04 1.9-5.18 3.84-.7 1.2-1 2.56-.88 3.93.1 1.15.54 2.25 1.27 3.16.89 1.12 1.34 2.53 1.28 3.96-.06 1.48-.68 2.86-1.73 3.88 2.19-.24 4.2-1.25 5.66-2.85 1.46-1.6 2.24-3.69 2.19-5.83-.02-.6-.23-1.13-.6-1.55zM12 21.67c-1.39 0-2.73-.55-3.71-1.54-.99-.98-1.54-2.32-1.54-3.71 0-1.13.37-2.22 1.05-3.12 1.25-1.65 1.58-3.83.87-5.8 2.76 1.83 4.29 4.96 3.86 8.24-.07.57-.02 1.15.15 1.7.27.87.84 1.62 1.6 2.11-.69.7-1.46 1.12-2.28 1.12z"></path>
+            </svg>
+            <span class="nav-title">Trending</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"></path>
+            </svg>
+            <span class="nav-title">Music</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+            </svg>
+            <span class="nav-title">Gaming</span>
+          </a>
+          <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+            </svg>
+            <span class="nav-title">News</span>
+          </a>
+        </nav>
+
+        <hr class="nav-divider">
+
+        <!-- Sidebar Footer -->
+        <footer class="sidebar-footer">
+          <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Press</a>
+            <a href="#">Copyright</a>
+            <a href="#">Contact us</a>
+            <a href="#">Creators</a>
+            <a href="#">Advertise</a>
+            <a href="#">Developers</a>
+          </div>
+          <div class="footer-links">
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Policy &amp; Safety</a>
+            <a href="#">How YouTube works</a>
+          </div>
+          <p class="copyright-text">&copy; 2026 YouTube LLC Replica Demo</p>
+        </footer>
+
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <main class="yt-main" id="primary-content">
+
+      <!-- Category Filter Chips -->
+      <section class="chips-container" aria-label="Filters">
+        <div class="chips-scroll">
+          <button class="chip active">All</button>
+          <button class="chip">Web Development</button>
+          <button class="chip">Artificial Intelligence</button>
+          <button class="chip">Cloud Computing</button>
+          <button class="chip">System Architecture</button>
+          <button class="chip">Gaming</button>
+          <button class="chip">Lo-Fi Beats</button>
+          <button class="chip">Quantum Physics</button>
+          <button class="chip">Next.js &amp; React</button>
+          <button class="chip">Podcasts</button>
+          <button class="chip">Live Streams</button>
+          <button class="chip">CSS Architecture</button>
+          <button class="chip">Recently Uploaded</button>
+          <button class="chip">Watched</button>
+          <button class="chip">New to you</button>
+        </div>
+      </section>
+
+      <!-- Video Feed Grid -->
+      <section class="video-grid" aria-label="Recommended Videos">
+
+        <!-- Video Card 1 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=720&q=80" alt="Building an AI Operating System" class="thumbnail-img">
+            <span class="time-badge">24:18</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+              <span class="quick-action-btn" title="Add to queue">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M22 13h-4v4h-2v-4h-4v-2h4V7h2v4h4v2zm-8-6H2v2h12V7zm0 4H2v2h12v-2zm-4 4H2v2h8v-2z"></path></svg>
+              </span>
+            </div>
+            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead Pro" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">Building an Autonomous AI Agent OS from Scratch in 2026</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Tech Lead Pro</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>1.4M views</span>
+                <span class="dot-separator">•</span>
+                <span>2 days ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 2 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=720&q=80" alt="Hardware Comparison" class="thumbnail-img">
+            <span class="time-badge">18:42</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="Hardware Unleashed" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">The Ultimate Next-Gen GPU Benchmark: RTX 5090 vs Apple Silicon M4 Ultra</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Hardware Unleashed</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>890K views</span>
+                <span class="dot-separator">•</span>
+                <span>5 days ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 3 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=720&q=80" alt="Quantum Computing" class="thumbnail-img">
+            <span class="time-badge">32:05</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Frontiers" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">Why Silicon Quantum Processors Just Broke Physics As We Know It</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Quantum Frontiers</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>3.1M views</span>
+                <span class="dot-separator">•</span>
+                <span>1 week ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 4 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=720&q=80" alt="Lofi Beats Stream" class="thumbnail-img">
+            <span class="time-badge live-badge">LIVE</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=80&q=80" alt="Chillwave Beats" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">synthwave / lofi hip hop radio - beats to relax/study/code to ☕</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Chillwave Beats 24/7</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats live-stats">
+                <span class="pulse-dot"></span>
+                <span>24,812 watching</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ==================== SHORTS SHELF ==================== -->
+      <section class="shorts-shelf" aria-label="YouTube Shorts">
+        <div class="shelf-header">
+          <div class="shelf-title-left">
+            <svg viewBox="0 0 24 24" class="shorts-icon-large">
+              <path d="M17.77 10.32l-1.2-.5-1.1-.48V8.1a4.2 4.2 0 0 0-4.2-4.2c-1.3 0-2.4.6-3.1 1.6l-3.3 5.5a4.2 4.2 0 0 0 1.5 5.7l1.2.5 1.1.48v1.24a4.2 4.2 0 0 0 4.2 4.2c1.3 0 2.4-.6 3.1-1.6l3.3-5.5a4.2 4.2 0 0 0-1.5-5.7zM10 14.5v-5l4.5 2.5L10 14.5z"></path>
+            </svg>
+            <h2>Shorts</h2>
+          </div>
+        </div>
+
+        <div class="shorts-grid">
+          <!-- Short 1 -->
+          <article class="short-card">
+            <a href="#" class="short-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&h=700&q=80" alt="CSS Grid Secret" class="short-thumb">
+              <div class="short-overlay">
+                <h3 class="short-title">1 CSS Property You Never Knew Existed 🤯</h3>
+                <span class="short-views">4.2M views</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Short 2 -->
+          <article class="short-card">
+            <a href="#" class="short-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&h=700&q=80" alt="Cyberpunk Setup" class="short-thumb">
+              <div class="short-overlay">
+                <h3 class="short-title">The Cleanest Desk Setup in Tokyo 2026</h3>
+                <span class="short-views">1.9M views</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Short 3 -->
+          <article class="short-card">
+            <a href="#" class="short-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&h=700&q=80" alt="Speedrun Record" class="short-thumb">
+              <div class="short-overlay">
+                <h3 class="short-title">World Record achieved after 14,000 attempts!</h3>
+                <span class="short-views">8.7M views</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Short 4 -->
+          <article class="short-card">
+            <a href="#" class="short-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=400&h=700&q=80" alt="AI Robot Walk" class="short-thumb">
+              <div class="short-overlay">
+                <h3 class="short-title">Humanoid Robot learns gymnastics in 30 minutes</h3>
+                <span class="short-views">12M views</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Short 5 -->
+          <article class="short-card">
+            <a href="#" class="short-thumb-wrapper">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&h=700&q=80" alt="Frontend Dev Life" class="short-thumb">
+              <div class="short-overlay">
+                <h3 class="short-title">Junior vs Senior CSS centering a div 💀</h3>
+                <span class="short-views">6.1M views</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ==================== SECOND VIDEO FEED SECTION ==================== -->
+      <section class="video-grid" aria-label="More Recommended Videos">
+
+        <!-- Video Card 5 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=720&q=80" alt="Cloud Architecture" class="thumbnail-img">
+            <span class="time-badge">45:10</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="CodeMaster HQ" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">AWS Cloud Architecture Masterclass: Scaling to 100M Daily Requests</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">CodeMaster HQ</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>452K views</span>
+                <span class="dot-separator">•</span>
+                <span>3 weeks ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 6 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=720&q=80" alt="Design Systems" class="thumbnail-img">
+            <span class="time-badge">14:02</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Design Matrix" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">Design Systems That Don't Suck: How Linear &amp; Stripe Craft Perfection</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Design Matrix</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>730K views</span>
+                <span class="dot-separator">•</span>
+                <span>4 days ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 7 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=720&q=80" alt="Generative Art with Math" class="thumbnail-img">
+            <span class="time-badge">21:55</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead Pro" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">Simulating Black Holes and Gravitational Lensing in Pure GLSL Shaders</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Tech Lead Pro</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>1.1M views</span>
+                <span class="dot-separator">•</span>
+                <span>1 month ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Video Card 8 -->
+        <article class="video-card">
+          <a href="#" class="thumbnail-wrapper">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=720&q=80" alt="Building High-Performance Web Apps" class="thumbnail-img">
+            <span class="time-badge">29:40</span>
+            <div class="hover-overlay">
+              <span class="quick-action-btn" title="Watch later">
+                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
+              </span>
+            </div>
+          </a>
+          <div class="video-details">
+            <a href="#" class="channel-avatar-link">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Frontiers" class="channel-avatar">
+            </a>
+            <div class="video-meta">
+              <h2 class="video-title">
+                <a href="#">I Replaced React with 100% Vanilla HTML &amp; CSS: Performance Shock!</a>
+              </h2>
+              <div class="channel-name-wrapper">
+                <a href="#" class="channel-name">Quantum Frontiers</a>
+                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
+              </div>
+              <div class="video-stats">
+                <span>2.8M views</span>
+                <span class="dot-separator">•</span>
+                <span>6 days ago</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
