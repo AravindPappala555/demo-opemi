@@ -3,609 +3,1056 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pixel-perfect YouTube Replica created purely with modern semantic HTML5 and CSS3. Features authentic dark theme, responsive grid, dynamic hover effects, and pure CSS sidebar toggle.">
-  <title>YouTube Replica - Pure HTML &amp; CSS Demo</title>
-  
-  <!-- Google Fonts: Roboto & Inter -->
+  <meta name="description" content="PrimeFlix - The ultimate hybrid streaming experience blending Netflix & Amazon Prime Video. Featuring the Spider-Man Multiverse collection, Superhero blockbusters, Sci-Fi epics, and Originals.">
+  <title>PrimeFlix | Watch Spider-Man, Superheroes, Movies &amp; Series</title>
+
+  <!-- Google Fonts: Netflix/Prime modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Checkbox hack for pure CSS sidebar toggle -->
-  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
+<body class="primeflix-body">
 
-  <!-- ==================== HEADER / TOP NAVBAR ==================== -->
-  <header class="yt-header" id="main-header">
-    <div class="header-left">
-      <label for="sidebar-toggle" class="icon-btn menu-btn" aria-label="Toggle Navigation Sidebar" title="Guide">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"></path>
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="primeflix-nav" id="main-nav">
+    <div class="nav-left">
+      <!-- Hybrid Brand Logo (Netflix Red + Prime Electric Blue) -->
+      <a href="#" class="brand-logo" aria-label="PrimeFlix Home">
+        <span class="logo-prime">PRIME</span><span class="logo-flix">FLIX</span>
+        <svg class="prime-smile" viewBox="0 0 100 20">
+          <path d="M 5,8 Q 50,22 95,8" fill="none" stroke="#00a8e1" stroke-width="4.5" stroke-linecap="round" />
+          <polygon points="90,4 98,9 91,14" fill="#00a8e1" />
         </svg>
-      </label>
-
-      <a href="#" class="yt-logo-link" aria-label="YouTube Home">
-        <div class="yt-logo-icon">
-          <svg viewBox="0 0 24 24" class="logo-play-svg">
-            <path d="M21.58 7.19a2.76 2.76 0 0 0-1.95-1.96C17.9 4.75 12 4.75 12 4.75s-5.9 0-7.63.48a2.76 2.76 0 0 0-1.95 1.96A28.91 28.91 0 0 0 2 12a28.91 28.91 0 0 0 .42 4.81c.24.9.95 1.61 1.95 1.86 1.73.48 7.63.48 7.63.48s5.9 0 7.63-.48a2.76 2.76 0 0 0 1.95-1.86A28.91 28.91 0 0 0 22 12a28.91 28.91 0 0 0-.42-4.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"></path>
-          </svg>
-        </div>
-        <span class="yt-logo-text">YouTube</span>
-        <span class="yt-country-badge">DEMO</span>
       </a>
+
+      <!-- Primary Genre Navigation -->
+      <nav class="nav-links">
+        <a href="#hero-banner" class="nav-link active">Home</a>
+        <a href="#spiderman-universe" class="nav-link highlight-spidey">🕷️ Spider-Man Vault</a>
+        <a href="#superheroes" class="nav-link">⚡ Superheroes</a>
+        <a href="#scifi" class="nav-link">🚀 Sci-Fi</a>
+        <a href="#action" class="nav-link">💥 Action</a>
+        <a href="#originals" class="nav-link">👑 Prime &amp; Netflix Originals</a>
+        <a href="#my-list" class="nav-link">My Watchlist</a>
+      </nav>
     </div>
 
-    <!-- Center Search Section -->
-    <div class="header-center">
-      <form class="search-form" action="#" method="get" onsubmit="return false;">
-        <div class="search-input-wrapper">
-          <input type="text" class="search-input" placeholder="Search" aria-label="Search" id="search-input">
-        </div>
-        <button type="submit" class="search-btn" aria-label="Search" title="Search">
-          <svg viewBox="0 0 24 24" class="svg-icon">
-            <path d="M20.87 20.17l-5.59-5.59A7.94 7.94 0 0 0 17 9.5a7.5 7.5 0 1 0-7.5 7.5 7.94 7.94 0 0 0 5.08-1.72l5.59 5.59.7-.7zM3 9.5a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0z"></path>
-          </svg>
+    <!-- Right Controls: Search, Badges, Profiles -->
+    <div class="nav-right">
+      <div class="search-box">
+        <button class="search-toggle-btn" id="search-btn" aria-label="Search movies">
+          <svg viewBox="0 0 24 24" class="nav-svg"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </button>
-      </form>
-      <button class="icon-btn voice-search-btn" aria-label="Search with your voice" title="Search with your voice">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"></path>
-        </svg>
-      </button>
-    </div>
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search Spider-Man, movies, genres...">
+      </div>
 
-    <!-- Right Utility Buttons -->
-    <div class="header-right">
-      <button class="create-btn" title="Create">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-4.5l4 4v-11l-4 4V6zm-1 11H4V7h12v10z"></path>
-        </svg>
-        <span>Create</span>
+      <div class="hybrid-badge" title="Combined Subscription Active">
+        <span class="pill-prime">PRIME</span>
+        <span class="pill-plus">+</span>
+        <span class="pill-netflix">NETFLIX</span>
+      </div>
+
+      <button class="nav-icon-btn" aria-label="Notifications" title="Notifications">
+        <svg viewBox="0 0 24 24" class="nav-svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        <span class="notif-dot"></span>
       </button>
 
-      <button class="icon-btn notification-btn" title="Notifications" aria-label="Notifications">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2v-5c0-3.07-1.64-5.64-4.5-6.32V6c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C9.63 7.36 8 9.92 8 13v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"></path>
-        </svg>
-        <span class="badge-count">9+</span>
-      </button>
-
-      <div class="user-avatar-btn" title="Account profile">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="User Profile" class="avatar-img">
+      <div class="profile-menu" title="Switch Profile">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User Profile" class="avatar-img">
+        <span class="profile-arrow">▾</span>
       </div>
     </div>
   </header>
 
-  <!-- ==================== MAIN LAYOUT CONTAINER ==================== -->
-  <div class="app-layout">
-    
-    <!-- ==================== SIDEBAR ==================== -->
-    <aside class="yt-sidebar" id="main-sidebar">
-      <div class="sidebar-scrollable">
-        
-        <!-- Primary Navigation -->
-        <nav class="nav-group">
-          <a href="#" class="nav-item active">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
-            </svg>
-            <span class="nav-title">Home</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon shorts-red">
-              <path d="M17.77 10.32l-1.2-.5-1.1-.48V8.1a4.2 4.2 0 0 0-4.2-4.2c-1.3 0-2.4.6-3.1 1.6l-3.3 5.5a4.2 4.2 0 0 0 1.5 5.7l1.2.5 1.1.48v1.24a4.2 4.2 0 0 0 4.2 4.2c1.3 0 2.4-.6 3.1-1.6l3.3-5.5a4.2 4.2 0 0 0-1.5-5.7zM10 14.5v-5l4.5 2.5L10 14.5z"></path>
-            </svg>
-            <span class="nav-title">Shorts</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M18.7 8.7H5.3V7h13.4v1.7zm-1.7-5H7v1.7h10V3.7zm3.4 8.6H3.6c-.6 0-1 .4-1 1v8c0 .6.4 1 1 1h16.8c.6 0 1-.4 1-1v-8c0-.6-.4-1-1-1zm-1 8H4.6v-6h14.8v6zm-8.8-5v4l3.5-2-3.5-2z"></path>
-            </svg>
-            <span class="nav-title">Subscriptions</span>
-          </a>
-        </nav>
+  <!-- ==================== HERO SPOTLIGHT: SPIDER-MAN ==================== -->
+  <section class="hero-spotlight" id="hero-banner">
+    <!-- Hero Backdrop Image -->
+    <div class="hero-backdrop-wrapper">
+      <img src="https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg" 
+           alt="Spider-Man: No Way Home Spotlight" 
+           class="hero-backdrop" 
+           onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=1600&q=80'">
+      <div class="hero-gradient-overlay"></div>
+      <div class="hero-vignette"></div>
+    </div>
 
-        <hr class="nav-divider">
+    <!-- Hero Content & Meta -->
+    <div class="hero-content">
+      <div class="hero-badge-row">
+        <span class="badge-spotlight">🕷️ SPIDER-MAN SHOWCASE</span>
+        <span class="badge-prime-inc"><svg viewBox="0 0 24 24" class="mini-check"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> INCLUDED WITH PRIME</span>
+        <span class="badge-netflix-top">NETFLIX #1 IN MOVIES TODAY</span>
+      </div>
 
-        <!-- Library / You Section -->
-        <div class="nav-section-header">
-          <span class="section-title">You</span>
-          <svg viewBox="0 0 24 24" class="mini-arrow-icon">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-          </svg>
+      <h1 class="hero-title">SPIDER-MAN: NO WAY HOME</h1>
+      <p class="hero-tagline">THE MULTIVERSE UNLEASHED • TOBEY, ANDREW &amp; TOM ASSEMBLE</p>
+
+      <div class="hero-meta-row">
+        <span class="match-score">99% Match</span>
+        <span class="imdb-score"><span class="imdb-icon">IMDb</span> 8.9/10</span>
+        <span class="age-badge">13+</span>
+        <span class="duration">2h 28m</span>
+        <span class="quality-badge">4K ULTRA HD</span>
+        <span class="quality-badge">HDR10</span>
+        <span class="audio-badge">DOLBY ATMOS</span>
+      </div>
+
+      <p class="hero-description">
+        For the first time in cinematic history, Peter Parker’s identity is unmasked. When Doctor Strange’s spell to restore his secret goes haywire, sinister visitors from parallel universes invade, forcing Peter to confront villains from across the Multiverse and learn the true cost of being a hero.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-play" onclick="openTrailerModal('Spider-Man: No Way Home', 'https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg', '2021', '2h 28m', '99% Match', 'With Spider-Man\'s identity revealed, Peter enlists Doctor Strange\'s help. When a spell goes rogue, foes from other realities appear. Starring Tom Holland, Zendaya, Benedict Cumberbatch, Tobey Maguire, and Andrew Garfield.')">
+          <svg viewBox="0 0 24 24" class="btn-svg"><path d="M8 5v14l11-7z"/></svg>
+          <span>Play Movie</span>
+        </button>
+
+        <button class="btn btn-watchlist" onclick="toggleWatchlist(this, 'Spider-Man: No Way Home')">
+          <svg viewBox="0 0 24 24" class="btn-svg"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          <span>Watchlist</span>
+        </button>
+
+        <button class="btn btn-info" onclick="openTrailerModal('Spider-Man: No Way Home', 'https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg', '2021', '2h 28m', '99% Match', 'With Spider-Man\'s identity revealed, Peter enlists Doctor Strange\'s help. When a spell goes rogue, foes from other realities appear. Starring Tom Holland, Zendaya, Benedict Cumberbatch, Tobey Maguire, and Andrew Garfield.')">
+          <svg viewBox="0 0 24 24" class="btn-svg"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          <span>More Info</span>
+        </button>
+      </div>
+
+      <div class="hero-cast-snippet">
+        <span class="label">Starring:</span> Tom Holland, Zendaya, Benedict Cumberbatch, Tobey Maguire, Andrew Garfield, Willem Dafoe
+        <br><span class="label">Genres:</span> Superhero, Marvel Universe, Action, Multiverse Sci-Fi
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== QUICK GENRE FILTER TABS ==================== -->
+  <div class="filter-strip">
+    <div class="filter-pills">
+      <button class="pill-filter active" onclick="filterGenre('all')">All Titles</button>
+      <button class="pill-filter spidey-pill" onclick="filterGenre('spiderman')">🕷️ Spider-Man Collection</button>
+      <button class="pill-filter" onclick="filterGenre('superhero')">⚡ Superhero &amp; Comics</button>
+      <button class="pill-filter" onclick="filterGenre('scifi')">🚀 Sci-Fi &amp; Cosmic</button>
+      <button class="pill-filter" onclick="filterGenre('action')">💥 Action &amp; Thrillers</button>
+      <button class="pill-filter" onclick="filterGenre('originals')">👑 Prime &amp; Netflix Originals</button>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CATALOG ROWS ==================== -->
+  <main class="streaming-catalog">
+
+    <!-- ==================== ROW 1: SPIDER-MAN MULTIVERSE COLLECTION ==================== -->
+    <section class="movie-row-section spiderman-section" id="spiderman-universe" data-category="spiderman">
+      <div class="row-header">
+        <div class="header-text-group">
+          <h2 class="row-title">
+            <span class="spidey-accent">🕷️ The Spider-Man Multiverse</span>
+            <span class="row-badge-pill">MOST WATCHED</span>
+          </h2>
+          <p class="row-subtitle">Tobey Maguire • Andrew Garfield • Tom Holland • Miles Morales — All 9 Iconic Films</p>
         </div>
-
-        <nav class="nav-group">
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
-            </svg>
-            <span class="nav-title">History</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M22 13h-4v4h-2v-4h-4v-2h4V7h2v4h4v2zm-8-6H2v2h12V7zm0 4H2v2h12v-2zm-4 4H2v2h8v-2z"></path>
-            </svg>
-            <span class="nav-title">Playlists</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M10 16.5l6-4.5-6-4.5v9zM5 2c-.55 0-1 .45-1 1v18c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H5zm0 18V4h14v16H5z"></path>
-            </svg>
-            <span class="nav-title">Your videos</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path>
-            </svg>
-            <span class="nav-title">Watch Later</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"></path>
-            </svg>
-            <span class="nav-title">Liked videos</span>
-          </a>
-        </nav>
-
-        <hr class="nav-divider">
-
-        <!-- Subscriptions Channel List -->
-        <div class="nav-section-header">
-          <span class="section-title">Subscriptions</span>
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow left-arrow" onclick="scrollRow('spidey-carousel', -1)" aria-label="Scroll Left">‹</button>
+          <button class="carousel-arrow right-arrow" onclick="scrollRow('spidey-carousel', 1)" aria-label="Scroll Right">›</button>
         </div>
+      </div>
 
-        <nav class="nav-group subscriptions-group">
-          <a href="#" class="nav-item channel-item">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead" class="sub-avatar">
-            <span class="nav-title">Tech Lead Pro</span>
-            <span class="live-indicator"></span>
-          </a>
-          <a href="#" class="nav-item channel-item">
-            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="CodeMaster" class="sub-avatar">
-            <span class="nav-title">CodeMaster HQ</span>
-          </a>
-          <a href="#" class="nav-item channel-item">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Design Matrix" class="sub-avatar">
-            <span class="nav-title">Design Matrix</span>
-          </a>
-          <a href="#" class="nav-item channel-item">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Science" class="sub-avatar">
-            <span class="nav-title">Quantum Frontiers</span>
-            <span class="live-indicator"></span>
-          </a>
-          <a href="#" class="nav-item channel-item">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=80&q=80" alt="Lofi Radio" class="sub-avatar">
-            <span class="nav-title">Chillwave Beats 24/7</span>
-          </a>
-        </nav>
+      <div class="movie-carousel" id="spidey-carousel">
 
-        <hr class="nav-divider">
-
-        <!-- Explore Section -->
-        <div class="nav-section-header">
-          <span class="section-title">Explore</span>
-        </div>
-
-        <nav class="nav-group">
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M17.53 11.2c-.23-.3-.5-.58-.8-.84-.96-.83-1.63-1.9-1.92-3.1-.38-1.57-.12-3.23.71-4.6-2.18.52-4.04 1.9-5.18 3.84-.7 1.2-1 2.56-.88 3.93.1 1.15.54 2.25 1.27 3.16.89 1.12 1.34 2.53 1.28 3.96-.06 1.48-.68 2.86-1.73 3.88 2.19-.24 4.2-1.25 5.66-2.85 1.46-1.6 2.24-3.69 2.19-5.83-.02-.6-.23-1.13-.6-1.55zM12 21.67c-1.39 0-2.73-.55-3.71-1.54-.99-.98-1.54-2.32-1.54-3.71 0-1.13.37-2.22 1.05-3.12 1.25-1.65 1.58-3.83.87-5.8 2.76 1.83 4.29 4.96 3.86 8.24-.07.57-.02 1.15.15 1.7.27.87.84 1.62 1.6 2.11-.69.7-1.46 1.12-2.28 1.12z"></path>
-            </svg>
-            <span class="nav-title">Trending</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"></path>
-            </svg>
-            <span class="nav-title">Music</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
-            </svg>
-            <span class="nav-title">Gaming</span>
-          </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24" class="nav-icon">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
-            </svg>
-            <span class="nav-title">News</span>
-          </a>
-        </nav>
-
-        <hr class="nav-divider">
-
-        <!-- Sidebar Footer -->
-        <footer class="sidebar-footer">
-          <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Press</a>
-            <a href="#">Copyright</a>
-            <a href="#">Contact us</a>
-            <a href="#">Creators</a>
-            <a href="#">Advertise</a>
-            <a href="#">Developers</a>
+        <!-- Spider-Man 1: Across the Spider-Verse -->
+        <article class="movie-card featured-spidey" 
+                 onclick="openTrailerModal('Spider-Man: Across the Spider-Verse', 'https://image.tmdb.org/t/p/w780/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg', '2023', '2h 20m', '98% Match', 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its existence. Directed by Joaquim Dos Santos.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Spider-Man: Across the Spider-Verse" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX EXCLUSIVE</div>
+            <div class="card-rating-tag">★ 8.7</div>
           </div>
-          <div class="footer-links">
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Policy &amp; Safety</a>
-            <a href="#">How YouTube works</a>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle" title="Play Movie">▶</span>
+              <span class="circle-btn plus-circle" title="Add to Watchlist" onclick="event.stopPropagation(); toggleWatchlist(this, 'Across the Spider-Verse')">+</span>
+              <span class="circle-btn thumb-circle" title="Like">👍</span>
+              <span class="circle-btn info-circle" title="Details">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Across the Spider-Verse</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">PG</span>
+              <span class="duration-mini">2h 20m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Multiverse • Animation • Miles Morales</div>
           </div>
-          <p class="copyright-text">&copy; 2026 YouTube LLC Replica Demo</p>
-        </footer>
+        </article>
+
+        <!-- Spider-Man 2: No Way Home -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man: No Way Home', 'https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg', '2021', '2h 28m', '99% Match', 'Tom Holland, Tobey Maguire, and Andrew Garfield unite against Green Goblin, Doc Ock, and Electro.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Spider-Man: No Way Home" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 8.9</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'No Way Home')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">No Way Home</h3>
+            <div class="card-specs">
+              <span class="match">99% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 28m</span>
+              <span class="res-mini">IMAX 4K</span>
+            </div>
+            <div class="card-genres">3 Peter Parkers • MCU • Action</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 3: Into the Spider-Verse -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man: Into the Spider-Verse', 'https://image.tmdb.org/t/p/w780/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg', '2018', '1h 57m', '97% Match', 'Teen Miles Morales becomes the new Spider-Man and joins other Spider-Heroes from alternate dimensions to stop a menace for all realities.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg" alt="Into the Spider-Verse" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 8.4</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Into the Spider-Verse')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Into the Spider-Verse</h3>
+            <div class="card-specs">
+              <span class="match">97% Match</span>
+              <span class="badge-mini">PG</span>
+              <span class="duration-mini">1h 57m</span>
+              <span class="res-mini">Oscar Winner</span>
+            </div>
+            <div class="card-genres">Miles Morales • Spider-Gwen • Spider-Ham</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 4: Spider-Man (2002 - Tobey Maguire) -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man (2002)', 'https://image.tmdb.org/t/p/w780/gh4c2bhLYQEZApEiYMsmFg0LSuw.jpg', '2002', '2h 01m', '94% Match', 'Tobey Maguire originates the legendary role directed by Sam Raimi. Featuring Willem Dafoe as the terrifying Green Goblin.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/gh4c2bhLYQEZApEiYMsmFg0LSuw.jpg" alt="Spider-Man 2002 Tobey Maguire" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.4</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Spider-Man 2002')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Spider-Man (2002)</h3>
+            <div class="card-specs">
+              <span class="match">94% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 01m</span>
+              <span class="res-mini">Remastered HD</span>
+            </div>
+            <div class="card-genres">Tobey Maguire • Green Goblin • Classic</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 5: Spider-Man 2 (2004) -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man 2 (2004)', 'https://image.tmdb.org/t/p/w780/olxpyq9kJAZ2NU1siLshhhipq1v.jpg', '2004', '2h 07m', '96% Match', 'Peter Parker struggles in his personal life while battling brilliant scientist Dr. Otto Octavius (Alfred Molina). Widely regarded as one of the best superhero films.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/olxpyq9kJAZ2NU1siLshhhipq1v.jpg" alt="Spider-Man 2 Doc Ock" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.5</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Spider-Man 2')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Spider-Man 2</h3>
+            <div class="card-specs">
+              <span class="match">96% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 07m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Doc Ock • Tobey Maguire • Masterpiece</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 6: The Amazing Spider-Man (Andrew Garfield) -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('The Amazing Spider-Man', 'https://image.tmdb.org/t/p/w780/fSbqPbqXaLj4lPrMmK0u799cySd.jpg', '2012', '2h 16m', '93% Match', 'Andrew Garfield takes up the mantle as Peter Parker alongside Emma Stone as Gwen Stacy, facing off against The Lizard.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/fSbqPbqXaLj4lPrMmK0u799cySd.jpg" alt="The Amazing Spider-Man" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 7.0</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'The Amazing Spider-Man')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">The Amazing Spider-Man</h3>
+            <div class="card-specs">
+              <span class="match">93% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 16m</span>
+              <span class="res-mini">HD</span>
+            </div>
+            <div class="card-genres">Andrew Garfield • Gwen Stacy • Lizard</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 7: Spider-Man Homecoming -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man: Homecoming', 'https://image.tmdb.org/t/p/w780/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg', '2017', '2h 13m', '95% Match', 'Peter Parker attempts to balance ordinary high school life with his superhero alter-ego under the mentorship of Tony Stark, facing the Vulture.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg" alt="Spider-Man Homecoming" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.4</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Homecoming')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Spider-Man: Homecoming</h3>
+            <div class="card-specs">
+              <span class="match">95% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 13m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Iron Man Mentorship • Vulture • High School</div>
+          </div>
+        </article>
+
+        <!-- Spider-Man 8: Spider-Man Far From Home -->
+        <article class="movie-card featured-spidey"
+                 onclick="openTrailerModal('Spider-Man: Far From Home', 'https://image.tmdb.org/t/p/w780/4q2hz2m8hubgvij98EzI07qY89N.jpg', '2019', '2h 09m', '94% Match', 'Following the events of Avengers: Endgame, Peter Parker goes on a European vacation with his classmates, but must team up with Mysterio.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/4q2hz2m8hubgvij98EzI07qY89N.jpg" alt="Spider-Man Far From Home" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 7.5</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Far From Home')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Far From Home</h3>
+            <div class="card-specs">
+              <span class="match">94% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 09m</span>
+              <span class="res-mini">Dolby Vision</span>
+            </div>
+            <div class="card-genres">Mysterio • Europe • Post-Endgame</div>
+          </div>
+        </article>
 
       </div>
-    </aside>
+    </section>
 
-    <!-- ==================== MAIN CONTENT AREA ==================== -->
-    <main class="yt-main" id="primary-content">
-
-      <!-- Category Filter Chips -->
-      <section class="chips-container" aria-label="Filters">
-        <div class="chips-scroll">
-          <button class="chip active">All</button>
-          <button class="chip">Web Development</button>
-          <button class="chip">Artificial Intelligence</button>
-          <button class="chip">Cloud Computing</button>
-          <button class="chip">System Architecture</button>
-          <button class="chip">Gaming</button>
-          <button class="chip">Lo-Fi Beats</button>
-          <button class="chip">Quantum Physics</button>
-          <button class="chip">Next.js &amp; React</button>
-          <button class="chip">Podcasts</button>
-          <button class="chip">Live Streams</button>
-          <button class="chip">CSS Architecture</button>
-          <button class="chip">Recently Uploaded</button>
-          <button class="chip">Watched</button>
-          <button class="chip">New to you</button>
+    <!-- ==================== ROW 2: ALL SUPERHERO MOVIES (DEDICATED SECTION) ==================== -->
+    <section class="movie-row-section" id="superheroes" data-category="superhero">
+      <div class="row-header">
+        <div class="header-text-group">
+          <h2 class="row-title">
+            <span class="hero-accent">⚡ Superhero &amp; Comic Universe</span>
+            <span class="row-badge-pill">ALL SUPERHEROES</span>
+          </h2>
+          <p class="row-subtitle">Marvel Cinematic Universe • DC Dark Knights • Anti-Heroes &amp; Mutants</p>
         </div>
-      </section>
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow left-arrow" onclick="scrollRow('superhero-carousel', -1)" aria-label="Scroll Left">‹</button>
+          <button class="carousel-arrow right-arrow" onclick="scrollRow('superhero-carousel', 1)" aria-label="Scroll Right">›</button>
+        </div>
+      </div>
 
-      <!-- Video Feed Grid -->
-      <section class="video-grid" aria-label="Recommended Videos">
+      <div class="movie-carousel" id="superhero-carousel">
 
-        <!-- Video Card 1 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=720&q=80" alt="Building an AI Operating System" class="thumbnail-img">
-            <span class="time-badge">24:18</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
-              <span class="quick-action-btn" title="Add to queue">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M22 13h-4v4h-2v-4h-4v-2h4V7h2v4h4v2zm-8-6H2v2h12V7zm0 4H2v2h12v-2zm-4 4H2v2h8v-2z"></path></svg>
-              </span>
+        <!-- Deadpool & Wolverine -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Deadpool & Wolverine', 'https://image.tmdb.org/t/p/w780/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg', '2024', '2h 08m', '98% Match', 'Wade Wilson\'s peaceful life is disrupted when the Time Variance Authority recruits him for a mission with Wolverine.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg" alt="Deadpool and Wolverine" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.8</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Deadpool & Wolverine')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
             </div>
-            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 65%;"></div></div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead Pro" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">Building an Autonomous AI Agent OS from Scratch in 2026</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Tech Lead Pro</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>1.4M views</span>
-                <span class="dot-separator">•</span>
-                <span>2 days ago</span>
-              </div>
+            <h3 class="card-movie-title">Deadpool &amp; Wolverine</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">18+</span>
+              <span class="duration-mini">2h 08m</span>
+              <span class="res-mini">4K UHD</span>
             </div>
+            <div class="card-genres">Marvel • R-Rated Comedy • Multiverse</div>
           </div>
         </article>
 
-        <!-- Video Card 2 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=720&q=80" alt="Hardware Comparison" class="thumbnail-img">
-            <span class="time-badge">18:42</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
+        <!-- Avengers: Endgame -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Avengers: Endgame', 'https://image.tmdb.org/t/p/w780/or06FN3Dka5tukK1e9sl16pB3iy.jpg', '2019', '3h 01m', '99% Match', 'After the devastating events of Infinity War, the universe is in ruins. The remaining Avengers assemble to reverse Thanos\' actions.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="Avengers Endgame" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 8.4</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Avengers Endgame')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
             </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="Hardware Unleashed" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">The Ultimate Next-Gen GPU Benchmark: RTX 5090 vs Apple Silicon M4 Ultra</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Hardware Unleashed</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>890K views</span>
-                <span class="dot-separator">•</span>
-                <span>5 days ago</span>
-              </div>
+            <h3 class="card-movie-title">Avengers: Endgame</h3>
+            <div class="card-specs">
+              <span class="match">99% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">3h 01m</span>
+              <span class="res-mini">IMAX 4K</span>
             </div>
+            <div class="card-genres">Infinity Saga Finale • Iron Man • Thor</div>
           </div>
         </article>
 
-        <!-- Video Card 3 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=720&q=80" alt="Quantum Computing" class="thumbnail-img">
-            <span class="time-badge">32:05</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
+        <!-- The Dark Knight -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('The Dark Knight', 'https://image.tmdb.org/t/p/w780/qJ2tW6WMUDux911r6m7haRef0WH.jpg', '2008', '2h 32m', '99% Match', 'Batman raises the stakes in his war on crime with the help of Lt. Jim Gordon and DA Harvey Dent, until the Joker unleashes chaos on Gotham.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 9.0</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'The Dark Knight')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
             </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Frontiers" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">Why Silicon Quantum Processors Just Broke Physics As We Know It</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Quantum Frontiers</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>3.1M views</span>
-                <span class="dot-separator">•</span>
-                <span>1 week ago</span>
-              </div>
+            <h3 class="card-movie-title">The Dark Knight</h3>
+            <div class="card-specs">
+              <span class="match">99% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 32m</span>
+              <span class="res-mini">4K Ultra HD</span>
             </div>
+            <div class="card-genres">Christopher Nolan • Heath Ledger • DC</div>
           </div>
         </article>
 
-        <!-- Video Card 4 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=720&q=80" alt="Lofi Beats Stream" class="thumbnail-img">
-            <span class="time-badge live-badge">LIVE</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
+        <!-- The Batman (2022) -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('The Batman', 'https://image.tmdb.org/t/p/w780/74xTEgt7R36Fpooo50r9T25onhq.jpg', '2022', '2h 56m', '95% Match', 'In his second year of fighting crime, Batman pursues the Riddler, a sadistic serial killer who leaves cryptic clues across Gotham City.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="The Batman Robert Pattinson" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 7.9</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'The Batman')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
             </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=80&q=80" alt="Chillwave Beats" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">synthwave / lofi hip hop radio - beats to relax/study/code to ☕</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Chillwave Beats 24/7</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats live-stats">
-                <span class="pulse-dot"></span>
-                <span>24,812 watching</span>
-              </div>
+            <h3 class="card-movie-title">The Batman</h3>
+            <div class="card-specs">
+              <span class="match">95% Match</span>
+              <span class="badge-mini">16+</span>
+              <span class="duration-mini">2h 56m</span>
+              <span class="res-mini">Dolby Vision</span>
             </div>
+            <div class="card-genres">Noir Detective • Riddler • Gotham</div>
           </div>
         </article>
 
-      </section>
+        <!-- Iron Man (2008) -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Iron Man', 'https://image.tmdb.org/t/p/w780/78lPtwv72eTNqFW9COBYI0dWDJa.jpg', '2008', '2h 06m', '96% Match', 'After being held captive in an Afghan cave, billionaire engineer Tony Stark builds a high-tech suit of armor to fight evil as Iron Man.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg" alt="Iron Man Robert Downey Jr" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.9</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Iron Man')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Iron Man</h3>
+            <div class="card-specs">
+              <span class="match">96% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 06m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Robert Downey Jr. • MCU Origin • Sci-Fi</div>
+          </div>
+        </article>
 
-      <!-- ==================== SHORTS SHELF ==================== -->
-      <section class="shorts-shelf" aria-label="YouTube Shorts">
-        <div class="shelf-header">
-          <div class="shelf-title-left">
-            <svg viewBox="0 0 24 24" class="shorts-icon-large">
-              <path d="M17.77 10.32l-1.2-.5-1.1-.48V8.1a4.2 4.2 0 0 0-4.2-4.2c-1.3 0-2.4.6-3.1 1.6l-3.3 5.5a4.2 4.2 0 0 0 1.5 5.7l1.2.5 1.1.48v1.24a4.2 4.2 0 0 0 4.2 4.2c1.3 0 2.4-.6 3.1-1.6l3.3-5.5a4.2 4.2 0 0 0-1.5-5.7zM10 14.5v-5l4.5 2.5L10 14.5z"></path>
-            </svg>
-            <h2>Shorts</h2>
+        <!-- Black Panther: Wakanda Forever -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Black Panther: Wakanda Forever', 'https://image.tmdb.org/t/p/w780/sv1xJUazXeYqALzczSZ3O6nkH75.jpg', '2022', '2h 41m', '94% Match', 'The people of Wakanda fight to protect their home from intervening world powers and an underwater kingdom led by Namor.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/sv1xJUazXeYqALzczSZ3O6nkH75.jpg" alt="Black Panther Wakanda Forever" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 7.1</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Wakanda Forever')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Black Panther: Wakanda Forever</h3>
+            <div class="card-specs">
+              <span class="match">94% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 41m</span>
+              <span class="res-mini">IMAX</span>
+            </div>
+            <div class="card-genres">Wakanda • Namor • Marvel Epic</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== ROW 3: SCI-FI & COSMIC WORLDS ==================== -->
+    <section class="movie-row-section" id="scifi" data-category="scifi">
+      <div class="row-header">
+        <div class="header-text-group">
+          <h2 class="row-title">
+            <span class="scifi-accent">🚀 Sci-Fi &amp; Cosmic Dimensions</span>
+            <span class="row-badge-pill">MIND-BENDING</span>
+          </h2>
+          <p class="row-subtitle">Space Exploration • Dystopian Futures • Artificial Intelligence</p>
+        </div>
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow left-arrow" onclick="scrollRow('scifi-carousel', -1)" aria-label="Scroll Left">‹</button>
+          <button class="carousel-arrow right-arrow" onclick="scrollRow('scifi-carousel', 1)" aria-label="Scroll Right">›</button>
+        </div>
+      </div>
+
+      <div class="movie-carousel" id="scifi-carousel">
+
+        <!-- Interstellar -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Interstellar', 'https://image.tmdb.org/t/p/w780/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', '2014', '2h 49m', '99% Match', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival. Directed by Christopher Nolan with score by Hans Zimmer.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 8.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Interstellar')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Interstellar</h3>
+            <div class="card-specs">
+              <span class="match">99% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 49m</span>
+              <span class="res-mini">4K IMAX</span>
+            </div>
+            <div class="card-genres">Black Hole • Quantum Physics • Christopher Nolan</div>
+          </div>
+        </article>
+
+        <!-- Dune: Part Two -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Dune: Part Two', 'https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', '2024', '2h 46m', '98% Match', 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Directed by Denis Villeneuve.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune Part Two" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 8.6</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Dune Part Two')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Dune: Part Two</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 46m</span>
+              <span class="res-mini">Dolby Atmos</span>
+            </div>
+            <div class="card-genres">Arrakis • Timothée Chalamet • Denis Villeneuve</div>
+          </div>
+        </article>
+
+        <!-- Blade Runner 2049 -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Blade Runner 2049', 'https://image.tmdb.org/t/p/w780/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg', '2017', '2h 44m', '96% Match', 'Officer K, a new blade runner, unearths a long-buried secret that has the potential to plunge what\'s left of society into chaos.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg" alt="Blade Runner 2049" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 8.0</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Blade Runner 2049')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Blade Runner 2049</h3>
+            <div class="card-specs">
+              <span class="match">96% Match</span>
+              <span class="badge-mini">16+</span>
+              <span class="duration-mini">2h 44m</span>
+              <span class="res-mini">4K HDR</span>
+            </div>
+            <div class="card-genres">Cyberpunk • Ryan Gosling • Harrison Ford</div>
+          </div>
+        </article>
+
+        <!-- Inception -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Inception', 'https://image.tmdb.org/t/p/w780/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg', '2010', '2h 28m', '98% Match', 'A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg" alt="Inception" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 8.8</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Inception')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Inception</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 28m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Dreams • Leonardo DiCaprio • Christopher Nolan</div>
+          </div>
+        </article>
+
+        <!-- The Matrix -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('The Matrix', 'https://image.tmdb.org/t/p/w780/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg', '1999', '2h 16m', '97% Match', 'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the world he knows is an elaborate deception of an evil cyber-intelligence.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Matrix" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 8.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'The Matrix')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">The Matrix</h3>
+            <div class="card-specs">
+              <span class="match">97% Match</span>
+              <span class="badge-mini">16+</span>
+              <span class="duration-mini">2h 16m</span>
+              <span class="res-mini">Remastered</span>
+            </div>
+            <div class="card-genres">Keanu Reeves • Red Pill • Sci-Fi Benchmark</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== ROW 4: ACTION & HIGH-OCTANE THRILLERS ==================== -->
+    <section class="movie-row-section" id="action" data-category="action">
+      <div class="row-header">
+        <div class="header-text-group">
+          <h2 class="row-title">
+            <span class="action-accent">💥 Action &amp; Adrenaline</span>
+            <span class="row-badge-pill">HIGH OCTANE</span>
+          </h2>
+          <p class="row-subtitle">Martial Arts • Aerial Dogfights • Espionage &amp; Combat</p>
+        </div>
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow left-arrow" onclick="scrollRow('action-carousel', -1)" aria-label="Scroll Left">‹</button>
+          <button class="carousel-arrow right-arrow" onclick="scrollRow('action-carousel', 1)" aria-label="Scroll Right">›</button>
+        </div>
+      </div>
+
+      <div class="movie-carousel" id="action-carousel">
+
+        <!-- John Wick 4 -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('John Wick: Chapter 4', 'https://image.tmdb.org/t/p/w780/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg', '2023', '2h 49m', '97% Match', 'John Wick uncovers a path to defeating the High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg" alt="John Wick 4" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'John Wick 4')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">John Wick: Chapter 4</h3>
+            <div class="card-specs">
+              <span class="match">97% Match</span>
+              <span class="badge-mini">18+</span>
+              <span class="duration-mini">2h 49m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Keanu Reeves • Gun-Fu • High Table</div>
+          </div>
+        </article>
+
+        <!-- Top Gun Maverick -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Top Gun: Maverick', 'https://image.tmdb.org/t/p/w780/62HCnUTziyWcpDaBO2i1DX17ljH.jpg', '2022', '2h 10m', '98% Match', 'After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past while leading TOP GUN\'s elite graduates.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg" alt="Top Gun Maverick" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX</div>
+            <div class="card-rating-tag">★ 8.3</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Top Gun Maverick')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Top Gun: Maverick</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 10m</span>
+              <span class="res-mini">IMAX</span>
+            </div>
+            <div class="card-genres">Tom Cruise • Aerial Combat • Action Classic</div>
+          </div>
+        </article>
+
+        <!-- Mission Impossible Dead Reckoning -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Mission: Impossible - Dead Reckoning', 'https://image.tmdb.org/t/p/w780/NNxYkU70HPurnNCSiCjYAmacwm.jpg', '2023', '2h 43m', '96% Match', 'Ethan Hunt and his IMF team track down a terrifying new weapon that threatens all of humanity if it falls into the wrong hands.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg" alt="Mission Impossible Dead Reckoning" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 7.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Mission Impossible')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Dead Reckoning</h3>
+            <div class="card-specs">
+              <span class="match">96% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2h 43m</span>
+              <span class="res-mini">4K HDR</span>
+            </div>
+            <div class="card-genres">Tom Cruise • IMF Stunts • Spy Thriller</div>
+          </div>
+        </article>
+
+        <!-- Mad Max Fury Road -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Mad Max: Fury Road', 'https://image.tmdb.org/t/p/w780/hA2ple9q4qnwxp3hKVNhroipsir.jpg', '2015', '2h 00m', '97% Match', 'In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners and a drifter named Max.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/hA2ple9q4qnwxp3hKVNhroipsir.jpg" alt="Mad Max Fury Road" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+            <div class="card-rating-tag">★ 8.1</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Mad Max')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Mad Max: Fury Road</h3>
+            <div class="card-specs">
+              <span class="match">97% Match</span>
+              <span class="badge-mini">16+</span>
+              <span class="duration-mini">2h 00m</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Charlize Theron • Tom Hardy • Oscar Winner</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== ROW 5: PRIME ORIGINALS & NETFLIX EXCLUSIVES ==================== -->
+    <section class="movie-row-section" id="originals" data-category="originals">
+      <div class="row-header">
+        <div class="header-text-group">
+          <h2 class="row-title">
+            <span class="originals-accent">👑 Prime Originals &amp; Netflix Exclusives</span>
+            <span class="row-badge-pill">PREMIUM EXCLUSIVES</span>
+          </h2>
+          <p class="row-subtitle">Award-Winning Flagship Series from Amazon Studios &amp; Netflix</p>
+        </div>
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow left-arrow" onclick="scrollRow('originals-carousel', -1)" aria-label="Scroll Left">‹</button>
+          <button class="carousel-arrow right-arrow" onclick="scrollRow('originals-carousel', 1)" aria-label="Scroll Right">›</button>
+        </div>
+      </div>
+
+      <div class="movie-carousel" id="originals-carousel">
+
+        <!-- The Boys -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('The Boys', 'https://image.tmdb.org/t/p/w780/2zmTngn1tYC1AvfnNDBpQIum5U8.jpg', '2024', '4 Seasons', '98% Match', 'A fun and irreverent take on what happens when superheroes abuse their superpowers rather than use them for good. The Boys embark on a quest to expose the truth about The Seven.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/2zmTngn1tYC1AvfnNDBpQIum5U8.jpg" alt="The Boys" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">AMAZON ORIGINAL</div>
+            <div class="card-rating-tag">★ 8.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'The Boys')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">The Boys</h3>
+            <div class="card-specs">
+              <span class="match">98% Match</span>
+              <span class="badge-mini">18+</span>
+              <span class="duration-mini">4 Seasons</span>
+              <span class="res-mini">4K HDR</span>
+            </div>
+            <div class="card-genres">Homelander • Dark Satire • Anti-Hero</div>
+          </div>
+        </article>
+
+        <!-- Stranger Things -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Stranger Things', 'https://image.tmdb.org/t/p/w780/49WJfeN0moxb9IPfGn8AIqMGskD.jpg', '2024', '5 Seasons', '99% Match', 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg" alt="Stranger Things" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-netflix">NETFLIX ORIGINAL</div>
+            <div class="card-rating-tag">★ 8.7</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Stranger Things')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Stranger Things</h3>
+            <div class="card-specs">
+              <span class="match">99% Match</span>
+              <span class="badge-mini">16+</span>
+              <span class="duration-mini">5 Seasons</span>
+              <span class="res-mini">Dolby Vision</span>
+            </div>
+            <div class="card-genres">The Upside Down • 80s Sci-Fi • Eleven</div>
+          </div>
+        </article>
+
+        <!-- Reacher -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('Reacher', 'https://image.tmdb.org/t/p/w780/31GlVsMsP0BYvODBP1vyU20k0mG.jpg', '2024', '2 Seasons', '96% Match', 'Jack Reacher was arrested for murder and now the police need his help. Based on the books by Lee Child.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/31GlVsMsP0BYvODBP1vyU20k0mG.jpg" alt="Reacher" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">AMAZON ORIGINAL</div>
+            <div class="card-rating-tag">★ 8.1</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Reacher')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">Reacher</h3>
+            <div class="card-specs">
+              <span class="match">96% Match</span>
+              <span class="badge-mini">18+</span>
+              <span class="duration-mini">2 Seasons</span>
+              <span class="res-mini">4K UHD</span>
+            </div>
+            <div class="card-genres">Alan Ritchson • Military Crime • Action</div>
+          </div>
+        </article>
+
+        <!-- The Rings of Power -->
+        <article class="movie-card"
+                 onclick="openTrailerModal('The Lord of the Rings: The Rings of Power', 'https://image.tmdb.org/t/p/w780/mYLOqiStMxDK3fYZFirgrMt8z5d.jpg', '2024', '2 Seasons', '94% Match', 'Epic drama set thousands of years before the events of J.R.R. Tolkien\'s The Hobbit and The Lord of the Rings, following the forging of the Rings.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/mYLOqiStMxDK3fYZFirgrMt8z5d.jpg" alt="Rings of Power" class="poster-img" onerror="this.src='https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=500&q=80'">
+            <div class="card-streaming-tag tag-prime">AMAZON ORIGINAL</div>
+            <div class="card-rating-tag">★ 7.0</div>
+          </div>
+          <div class="card-overlay-info">
+            <div class="quick-btn-row">
+              <span class="circle-btn play-circle">▶</span>
+              <span class="circle-btn plus-circle" onclick="event.stopPropagation(); toggleWatchlist(this, 'Rings of Power')">+</span>
+              <span class="circle-btn thumb-circle">👍</span>
+              <span class="circle-btn info-circle">⌄</span>
+            </div>
+            <h3 class="card-movie-title">The Rings of Power</h3>
+            <div class="card-specs">
+              <span class="match">94% Match</span>
+              <span class="badge-mini">13+</span>
+              <span class="duration-mini">2 Seasons</span>
+              <span class="res-mini">Dolby Atmos</span>
+            </div>
+            <div class="card-genres">Middle-earth • Sauron • Fantasy Epic</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== WATCHLIST SECTION ==================== -->
+    <section class="movie-row-section" id="my-list">
+      <div class="row-header">
+        <h2 class="row-title">📌 My Watchlist (<span id="watchlist-count">1</span>)</h2>
+      </div>
+      <div class="movie-carousel" id="watchlist-carousel">
+        <article class="movie-card" onclick="openTrailerModal('Spider-Man: No Way Home', 'https://image.tmdb.org/t/p/original/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg', '2021', '2h 28m', '99% Match', 'Saved in your watchlist.')">
+          <div class="card-media">
+            <img src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="Spider-Man No Way Home" class="poster-img">
+            <div class="card-streaming-tag tag-prime">PRIME VIDEO</div>
+          </div>
+          <div class="card-overlay-info">
+            <h3 class="card-movie-title">Spider-Man: No Way Home</h3>
+            <div class="card-specs"><span class="match">99% Match</span><span class="res-mini">4K</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== CINEMATIC DETAILS / TRAILER MODAL ==================== -->
+  <div class="modal-backdrop" id="movie-modal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeTrailerModal()" aria-label="Close modal">✕</button>
+      
+      <div class="modal-banner">
+        <img id="modal-img" src="" alt="Movie Backdrop" class="modal-hero-img">
+        <div class="modal-gradient"></div>
+        <div class="modal-banner-controls">
+          <h2 id="modal-title" class="modal-title">Movie Title</h2>
+          <div class="modal-btn-row">
+            <button class="btn btn-play" onclick="alert('Playing stream in 4K HDR...')">
+              <svg viewBox="0 0 24 24" class="btn-svg"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Now</span>
+            </button>
+            <button class="circle-btn plus-circle" id="modal-watchlist-btn" title="Add to Watchlist">+</button>
+            <button class="circle-btn thumb-circle" title="Like">👍</button>
           </div>
         </div>
+      </div>
 
-        <div class="shorts-grid">
-          <!-- Short 1 -->
-          <article class="short-card">
-            <a href="#" class="short-thumb-wrapper">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&h=700&q=80" alt="CSS Grid Secret" class="short-thumb">
-              <div class="short-overlay">
-                <h3 class="short-title">1 CSS Property You Never Knew Existed 🤯</h3>
-                <span class="short-views">4.2M views</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Short 2 -->
-          <article class="short-card">
-            <a href="#" class="short-thumb-wrapper">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&h=700&q=80" alt="Cyberpunk Setup" class="short-thumb">
-              <div class="short-overlay">
-                <h3 class="short-title">The Cleanest Desk Setup in Tokyo 2026</h3>
-                <span class="short-views">1.9M views</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Short 3 -->
-          <article class="short-card">
-            <a href="#" class="short-thumb-wrapper">
-              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&h=700&q=80" alt="Speedrun Record" class="short-thumb">
-              <div class="short-overlay">
-                <h3 class="short-title">World Record achieved after 14,000 attempts!</h3>
-                <span class="short-views">8.7M views</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Short 4 -->
-          <article class="short-card">
-            <a href="#" class="short-thumb-wrapper">
-              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=400&h=700&q=80" alt="AI Robot Walk" class="short-thumb">
-              <div class="short-overlay">
-                <h3 class="short-title">Humanoid Robot learns gymnastics in 30 minutes</h3>
-                <span class="short-views">12M views</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Short 5 -->
-          <article class="short-card">
-            <a href="#" class="short-thumb-wrapper">
-              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&h=700&q=80" alt="Frontend Dev Life" class="short-thumb">
-              <div class="short-overlay">
-                <h3 class="short-title">Junior vs Senior CSS centering a div 💀</h3>
-                <span class="short-views">6.1M views</span>
-              </div>
-            </a>
-          </article>
+      <div class="modal-body">
+        <div class="modal-left">
+          <div class="modal-meta-line">
+            <span class="match-score" id="modal-match">98% Match</span>
+            <span class="release-year" id="modal-year">2023</span>
+            <span class="age-badge">13+</span>
+            <span class="duration" id="modal-duration">2h 20m</span>
+            <span class="quality-badge">4K ULTRA HD</span>
+            <span class="audio-badge">DOLBY ATMOS</span>
+          </div>
+          <p id="modal-description" class="modal-desc">Movie description goes here.</p>
         </div>
-      </section>
-
-      <!-- ==================== SECOND VIDEO FEED SECTION ==================== -->
-      <section class="video-grid" aria-label="More Recommended Videos">
-
-        <!-- Video Card 5 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=720&q=80" alt="Cloud Architecture" class="thumbnail-img">
-            <span class="time-badge">45:10</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
-            </div>
-            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 20%;"></div></div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&q=80" alt="CodeMaster HQ" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">AWS Cloud Architecture Masterclass: Scaling to 100M Daily Requests</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">CodeMaster HQ</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>452K views</span>
-                <span class="dot-separator">•</span>
-                <span>3 weeks ago</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Video Card 6 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=720&q=80" alt="Design Systems" class="thumbnail-img">
-            <span class="time-badge">14:02</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
-            </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Design Matrix" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">Design Systems That Don't Suck: How Linear &amp; Stripe Craft Perfection</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Design Matrix</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>730K views</span>
-                <span class="dot-separator">•</span>
-                <span>4 days ago</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Video Card 7 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=720&q=80" alt="Generative Art with Math" class="thumbnail-img">
-            <span class="time-badge">21:55</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
-            </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Tech Lead Pro" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">Simulating Black Holes and Gravitational Lensing in Pure GLSL Shaders</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Tech Lead Pro</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>1.1M views</span>
-                <span class="dot-separator">•</span>
-                <span>1 month ago</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Video Card 8 -->
-        <article class="video-card">
-          <a href="#" class="thumbnail-wrapper">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=720&q=80" alt="Building High-Performance Web Apps" class="thumbnail-img">
-            <span class="time-badge">29:40</span>
-            <div class="hover-overlay">
-              <span class="quick-action-btn" title="Watch later">
-                <svg viewBox="0 0 24 24" class="svg-micro"><path d="M12 3.75a8.25 8.25 0 1 0 8.25 8.25A8.26 8.26 0 0 0 12 3.75zm.75 8.56V7.5h-1.5v5.44l4.5 2.7.75-1.23-3.75-2.1z"></path></svg>
-              </span>
-            </div>
-          </a>
-          <div class="video-details">
-            <a href="#" class="channel-avatar-link">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Quantum Frontiers" class="channel-avatar">
-            </a>
-            <div class="video-meta">
-              <h2 class="video-title">
-                <a href="#">I Replaced React with 100% Vanilla HTML &amp; CSS: Performance Shock!</a>
-              </h2>
-              <div class="channel-name-wrapper">
-                <a href="#" class="channel-name">Quantum Frontiers</a>
-                <svg viewBox="0 0 24 24" class="verified-badge" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7l-4.2-4.2 1.4-1.4 2.8 2.8 6.9-6.9 1.4 1.4-8.3 8.3z"></path></svg>
-              </div>
-              <div class="video-stats">
-                <span>2.8M views</span>
-                <span class="dot-separator">•</span>
-                <span>6 days ago</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </section>
-
-    </main>
+        <div class="modal-right">
+          <div class="modal-detail-row"><span class="muted">Audio:</span> English [Original], Spanish, French, Hindi, Japanese</div>
+          <div class="modal-detail-row"><span class="muted">Subtitles:</span> English [CC], Spanish, French, German, Arabic</div>
+          <div class="modal-detail-row"><span class="muted">Included:</span> Prime Video + Netflix Pass</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Toast Notification for Watchlist -->
+  <div class="toast-notification" id="toast">Added to Watchlist!</div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="primeflix-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-prime">PRIME</span><span class="logo-flix">FLIX</span>
+        <p class="footer-tagline">The Best of Prime Video &amp; Netflix, unified in one cinematic universe.</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Spider-Man Hub</h4>
+          <a href="#spiderman-universe">Tom Holland Trilogy</a>
+          <a href="#spiderman-universe">Tobey Maguire Classics</a>
+          <a href="#spiderman-universe">The Amazing Spider-Man</a>
+          <a href="#spiderman-universe">Animated Spider-Verse</a>
+        </div>
+        <div class="footer-col">
+          <h4>Genres</h4>
+          <a href="#superheroes">Superheroes &amp; Comics</a>
+          <a href="#scifi">Sci-Fi Blockbusters</a>
+          <a href="#action">Action Thrillers</a>
+          <a href="#originals">Original Series</a>
+        </div>
+        <div class="footer-col">
+          <h4>Help &amp; Account</h4>
+          <a href="#">Manage Subscriptions</a>
+          <a href="#">Supported Devices</a>
+          <a href="#">Speed Test</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PrimeFlix Streaming Services LLC. Demo application combining Amazon Prime Video &amp; Netflix UI paradigms.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>

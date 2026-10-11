@@ -1,15 +1,15 @@
-# Steps to Deploy YouTube Replica on AWS EC2
+# Steps to Deploy PrimeFlix on AWS EC2
 
-This guide walks you through deploying your **YouTube Replica Web App (Pure HTML & CSS)** onto an AWS EC2 instance using **Nginx**.
+This guide walks you through deploying your **PrimeFlix Streaming Platform (Amazon Prime Video + Netflix Hybrid Web App)** onto an AWS EC2 instance using **Nginx**.
 
 ---
 
 ## 1. Launch an AWS EC2 Instance
 1. Go to the **AWS Management Console** &gt; **EC2** &gt; **Instances** &gt; **Launch Instance**.
-2. **Name**: `YouTube-Replica-WebApp`
+2. **Name**: `PrimeFlix-Streaming-WebApp`
 3. **AMI**: Amazon Linux 2023 or Ubuntu 22.04 / 24.04 LTS.
 4. **Instance Type**: `t2.micro` or `t3.micro` (Free Tier eligible).
-5. **Key Pair**: Select or create an `.pem` key pair for SSH access.
+5. **Key Pair**: Select or create a `.pem` key pair for SSH access.
 6. **Network Settings (Security Group)**:
    - Allow **SSH** (Port `22`) from your IP.
    - Check **Allow HTTP traffic from the internet** (Port `80`).
@@ -55,7 +55,7 @@ sudo systemctl status nginx
 
 ---
 
-## 4. Deploy the Web App Files
+## 4. Deploy the PrimeFlix Web App Files
 
 1. Navigate to the web root directory:
 ```bash
@@ -69,22 +69,22 @@ cd /var/www/html             # For Ubuntu
 sudo rm -rf *
 ```
 
-3. Transfer your local project files (`index.html` and `style.css`) to EC2 using `scp`:
+3. Transfer your local project files (`index.html`, `style.css`, and `app.js`) to EC2 using `scp`:
 From your **local machine terminal** (in `c:\Online-Trainings\Opemi\EC2-WebApp`):
 ```bash
 # For Amazon Linux:
-scp -i "your-key.pem" index.html style.css ec2-user@<YOUR-EC2-PUBLIC-IP>:/tmp/
+scp -i "your-key.pem" index.html style.css app.js ec2-user@<YOUR-EC2-PUBLIC-IP>:/tmp/
 
 # Move files to web directory on EC2:
-ssh -i "your-key.pem" ec2-user@<YOUR-EC2-PUBLIC-IP> "sudo mv /tmp/index.html /tmp/style.css /usr/share/nginx/html/ && sudo chmod 644 /usr/share/nginx/html/*"
+ssh -i "your-key.pem" ec2-user@<YOUR-EC2-PUBLIC-IP> "sudo mv /tmp/index.html /tmp/style.css /tmp/app.js /usr/share/nginx/html/ && sudo chmod 644 /usr/share/nginx/html/*"
 ```
 
 ```bash
 # For Ubuntu:
-scp -i "your-key.pem" index.html style.css ubuntu@<YOUR-EC2-PUBLIC-IP>:/tmp/
+scp -i "your-key.pem" index.html style.css app.js ubuntu@<YOUR-EC2-PUBLIC-IP>:/tmp/
 
 # Move files to web directory on EC2:
-ssh -i "your-key.pem" ubuntu@<YOUR-EC2-PUBLIC-IP> "sudo mv /tmp/index.html /tmp/style.css /var/www/html/ && sudo chmod 644 /var/www/html/*"
+ssh -i "your-key.pem" ubuntu@<YOUR-EC2-PUBLIC-IP> "sudo mv /tmp/index.html /tmp/style.css /tmp/app.js /var/www/html/ && sudo chmod 644 /var/www/html/*"
 ```
 
 ---
@@ -101,10 +101,10 @@ http://<YOUR-EC2-PUBLIC-IP>
 
 ---
 
-## 6. Quick Alternative: Instant Python Server (For Testing)
+## 6. Quick Alternative: Instant Python Server (For Quick Testing)
 If you just want to test on EC2 without setting up Nginx:
 ```bash
-# Run in the directory containing index.html and style.css
+# Run in the directory containing index.html, style.css, and app.js
 sudo python3 -m http.server 80
 ```
 *(Ensure Security Group allows Port 80 inbound traffic).*
